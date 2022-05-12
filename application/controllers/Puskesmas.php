@@ -89,7 +89,7 @@ class Puskesmas extends MY_Controller
 							$this->session->set_flashdata('message', 'Berhasil mengubah data.');
 							redirect('puskesmas');
 						} else {
-							echo '<div class="container"><div class="alert alert-danger" role="alert"><strong>Gagal</strong>  Tidak ada data yang diubah.</div></div>';
+							$this->session->set_flashdata('message', 'Tidak ada data yang diubah.');
 						}
 					}
 				}
