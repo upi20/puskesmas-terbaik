@@ -1,84 +1,79 @@
-<!-- Begin Page Content -->
-<div class="container-fluid">
-	<?php
-	$msg = $this->session->flashdata('message');
-	if (isset($msg)) {
-	?>
-		<div class="alert alert-success alert-dismissable">
-			<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-			<?= $msg; ?>
-		</div>
-	<?php
-	}
-	?>
-	<!-- DataTales Example -->
-	<div class="card shadow mb-4">
-		<div class="card-header py-3 d-flex flex-md-row  justify-content-between">
-			<h6 class="m-0 font-weight-bold text-primary">List Kriteria</h6>
-			<div>
-				<a href="<?= site_url('kriteria/tambah') ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</a>
-			</div>
-		</div>
-		<div class="card-body">
-			<div class="table-responsive">
-				<table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Kriteria</th>
-							<th>Sifat</th>
-							<th>Bobot</th>
-							<th>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php if ($kriteria) {
-							$no = 1;
-							foreach ($kriteria as $item) { ?>
-								<tr>
-									<td><?= $no++ ?></td>
-									<td><?= $item->kriteria ?></td>
-									<td><?= $item->sifat ?></td>
-									<td><?= $item->bobot ?></td>
-									<td>
-
-										<!-- Contextual button for informational alert messages -->
-										<button type="button" class="btn btn-info btn-sm" onclick="lihat_kriteria(<?= $item->kdKriteria; ?>)">
-											<i class="fas fa-eye"></i> Lihat
-										</button>
-
-										<!-- Indicates caution should be taken with this action -->
-										<button type="button" class="btn btn-warning btn-sm" onclick="edit_kriteria(<?= $item->kdKriteria; ?>)">
-											<i class="fas fa-edit"></i> Ubah Kriteria
-										</button>
-
-										<button type="button" class="btn btn-primary btn-sm" onclick="edit_item_kriteria(<?= $item->kdKriteria; ?>)">
-											<i class="fas fa-edit"></i> Ubah Item Kriteria
-										</button>
-
-										<!-- Indicates a dangerous or potentially negative action -->
-										<button type="button" data-toggle="modal" class="btn btn-danger btn-sm" data-target="#modalDelete">
-											<i class="fas fa-trash"></i> Hapus
-										</button>
-
-									</td>
-								</tr>
-							<?php }
-						} else { ?>
-							<tr>
-								<td colspan="5" class="text-center">
-									<h3>No Data Input</h3>
-								</td>
-							</tr>
-						<?php } ?>
-					</tbody>
-				</table>
-			</div>
+<?php
+$msg = $this->session->flashdata('message');
+if (isset($msg)) {
+?>
+	<div class="alert alert-success alert-dismissable">
+		<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+		<?= $msg; ?>
+	</div>
+<?php
+}
+?>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+	<div class="card-header py-3 d-flex flex-md-row  justify-content-between">
+		<h6 class="m-0 font-weight-bold text-primary">List Kriteria</h6>
+		<div>
+			<a href="<?= site_url('kriteria/tambah') ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</a>
 		</div>
 	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
+				<thead>
+					<tr>
+						<th>No</th>
+						<th>Kriteria</th>
+						<th>Sifat</th>
+						<th>Bobot</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php if ($kriteria) {
+						$no = 1;
+						foreach ($kriteria as $item) { ?>
+							<tr>
+								<td><?= $no++ ?></td>
+								<td><?= $item->kriteria ?></td>
+								<td><?= $item->sifat ?></td>
+								<td><?= $item->bobot ?></td>
+								<td>
 
+									<!-- Contextual button for informational alert messages -->
+									<button type="button" class="btn btn-info btn-sm" onclick="lihat_kriteria(<?= $item->kdKriteria; ?>)">
+										<i class="fas fa-eye"></i> Lihat
+									</button>
+
+									<!-- Indicates caution should be taken with this action -->
+									<button type="button" class="btn btn-warning btn-sm" onclick="edit_kriteria(<?= $item->kdKriteria; ?>)">
+										<i class="fas fa-edit"></i> Ubah Kriteria
+									</button>
+
+									<button type="button" class="btn btn-primary btn-sm" onclick="edit_item_kriteria(<?= $item->kdKriteria; ?>)">
+										<i class="fas fa-edit"></i> Ubah Item Kriteria
+									</button>
+
+									<!-- Indicates a dangerous or potentially negative action -->
+									<button type="button" data-toggle="modal" class="btn btn-danger btn-sm" data-target="#modalDelete">
+										<i class="fas fa-trash"></i> Hapus
+									</button>
+
+								</td>
+							</tr>
+						<?php }
+					} else { ?>
+						<tr>
+							<td colspan="5" class="text-center">
+								<h3>No Data Input</h3>
+							</td>
+						</tr>
+					<?php } ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
-
 <div class="modal fade" id="form_kriteria" tabindex="-1" role="dialog" aria-labelledby="form_kriteriaLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
