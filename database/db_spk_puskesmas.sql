@@ -53,7 +53,7 @@ INSERT INTO `kriteria` (`kdKriteria`, `kriteria`, `sifat`, `bobot`) VALUES
 --
 
 CREATE TABLE `nilai` (
-  `kdUniversitas` int(11) NOT NULL,
+  `kdPuskesmas` int(11) NOT NULL,
   `kdKriteria` int(11) NOT NULL,
   `nilai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -62,7 +62,7 @@ CREATE TABLE `nilai` (
 -- Dumping data untuk tabel `nilai`
 --
 
-INSERT INTO `nilai` (`kdUniversitas`, `kdKriteria`, `nilai`) VALUES
+INSERT INTO `nilai` (`kdPuskesmas`, `kdKriteria`, `nilai`) VALUES
 (4, 5, 4),
 (4, 6, 3),
 (4, 7, 4),
@@ -140,19 +140,19 @@ INSERT INTO `subkriteria` (`kdSubKriteria`, `subKriteria`, `value`, `kdKriteria`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `universitas`
+-- Struktur dari tabel `puskesmas`
 --
 
-CREATE TABLE `universitas` (
-  `kdUniversitas` int(11) NOT NULL,
-  `universitas` varchar(50) NOT NULL
+CREATE TABLE `puskesmas` (
+  `kdPuskesmas` int(11) NOT NULL,
+  `puskesmas` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `universitas`
+-- Dumping data untuk tabel `puskesmas`
 --
 
-INSERT INTO `universitas` (`kdUniversitas`, `universitas`) VALUES
+INSERT INTO `puskesmas` (`kdPuskesmas`, `puskesmas`) VALUES
 (4, 'Univ Sapu jagad aa'),
 (5, 'Univ Merdeka Indonesia'),
 (6, 'Univ Bangsa Jaya Abadi'),
@@ -172,7 +172,7 @@ ALTER TABLE `kriteria`
 -- Indeks untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  ADD UNIQUE KEY `indexNilai` (`kdUniversitas`,`kdKriteria`) USING BTREE,
+  ADD UNIQUE KEY `indexNilai` (`kdPuskesmas`,`kdKriteria`) USING BTREE,
   ADD KEY `kdKriteria` (`kdKriteria`);
 
 --
@@ -183,10 +183,10 @@ ALTER TABLE `subkriteria`
   ADD KEY `kdKriteria` (`kdKriteria`);
 
 --
--- Indeks untuk tabel `universitas`
+-- Indeks untuk tabel `puskesmas`
 --
-ALTER TABLE `universitas`
-  ADD PRIMARY KEY (`kdUniversitas`);
+ALTER TABLE `puskesmas`
+  ADD PRIMARY KEY (`kdPuskesmas`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -205,10 +205,10 @@ ALTER TABLE `subkriteria`
   MODIFY `kdSubKriteria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
--- AUTO_INCREMENT untuk tabel `universitas`
+-- AUTO_INCREMENT untuk tabel `puskesmas`
 --
-ALTER TABLE `universitas`
-  MODIFY `kdUniversitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `puskesmas`
+  MODIFY `kdPuskesmas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -218,7 +218,7 @@ ALTER TABLE `universitas`
 -- Ketidakleluasaan untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
-  ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`kdUniversitas`) REFERENCES `universitas` (`kdUniversitas`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`kdPuskesmas`) REFERENCES `puskesmas` (`kdPuskesmas`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`kdKriteria`) REFERENCES `kriteria` (`kdKriteria`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

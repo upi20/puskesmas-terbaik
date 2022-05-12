@@ -1,5 +1,5 @@
 <div class="page-header">
-	<h1>Halaman Olah Universitas</h1>
+	<h1>Halaman Olah Puskesmas</h1>
 </div>
 <div class="col-lg-12">
 	<?php
@@ -16,31 +16,31 @@
 	<div class="row">
 		<div class="panel panel-info box-style-shadow">
 
-			<div class="panel-heading">List Universitas</div>
+			<div class="panel-heading">List Puskesmas</div>
 			<div class="panel-content">
 				<div class="table-responsive">
 					<table class="table table-hover">
 						<thead>
 							<tr>
 								<th class="col-md-1">No</th>
-								<th class="col-md-6">Universitas</th>
+								<th class="col-md-6">Puskesmas</th>
 								<th class="col-md-5 ">Action</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
 							$no = 1;
-							if (isset($universitas)) {
-								if (count($universitas) == 0) {
+							if (isset($puskesmas)) {
+								if (count($puskesmas) == 0) {
 									echo '<tr><td colspan="3" class="text-center"><h3>No Data Input</h3></td></tr>';
 								}
-								foreach ($universitas as $item) {
+								foreach ($puskesmas as $item) {
 							?>
 									<tr>
 										<td><?php echo $no++ ?></td>
-										<td><?php echo $item->universitas ?></td>
+										<td><?php echo $item->puskesmas ?></td>
 										<td>
-											<a class="btn btn-primary btn-xs" href="<?php echo site_url('universitas/tambah/' . $item->kdUniversitas) ?>" role="button">
+											<a class="btn btn-primary btn-xs" href="<?php echo site_url('puskesmas/tambah/' . $item->kdPuskesmas) ?>" role="button">
 												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ubah
 											</a>
 
@@ -64,8 +64,8 @@
 
 	<div class="row">
 		<div class="form-group">
-			<a href="<?php echo site_url('universitas/tambah') ?>" type="button" class="btn btn-primary">Tambah
-				Universitas</a>
+			<a href="<?php echo site_url('puskesmas/tambah') ?>" type="button" class="btn btn-primary">Tambah
+				Puskesmas</a>
 		</div>
 
 	</div>
@@ -84,7 +84,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-danger" onclick="hapus_universitas(<?php echo $item->kdUniversitas; ?>)">
+				<button type="button" class="btn btn-danger" onclick="hapus_puskesmas(<?php echo $item->kdPuskesmas; ?>)">
 					Hapus
 				</button>
 			</div>

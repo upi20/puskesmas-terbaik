@@ -15,16 +15,16 @@ class Rangking extends MY_Controller
 		parent::__construct();
 		$this->load->model('MKriteria');
 		$this->load->model('MNilai');
-		$this->load->model('MUniversitas');
+		$this->load->model('MPuskesmas');
 		$this->load->model('MSAW');
 		$this->page->setTitle('Rangking | SPK Metode SAW');
 	}
 
 	public function index()
 	{
-		$universitas = $this->MUniversitas->getAll();
+		$puskesmas = $this->MPuskesmas->getAll();
 
-		if ($universitas == null) {
+		if ($puskesmas == null) {
 			redirect('rangking/noData');
 		}
 		/**
@@ -46,7 +46,7 @@ class Rangking extends MY_Controller
 		/**
 		 * Ambil data dari table SAW untuk perhitungan awal
 		 */
-		$table1 = $this->initialTableSAW($universitas);
+		$table1 = $this->initialTableSAW($puskesmas);
 		$this->page->setData('table1', $table1);
 
 
@@ -106,16 +106,16 @@ class Rangking extends MY_Controller
 	{
 		loadPage('saw/noData');
 	}
-	private function initialTableSAW($universitas)
+	private function initialTableSAW($puskesmas)
 	{
 		$nilai = $this->MNilai->getNilaiUniveristas();
 
 		$dataInput = array();
 		$no = 0;
-		foreach ($universitas as $item => $itemUniversitas) {
+		foreach ($puskesmas as $item => $itemPuskesmas) {
 			foreach ($nilai as $index => $itemNilai) {
-				if ($itemUniversitas->kdUniversitas == $itemNilai->kdUniversitas) {
-					$dataInput[$no]['universitas'] = $itemUniversitas->universitas;
+				if ($itemPuskesmas->kdPuskesmas == $itemNilai->kdPuskesmas) {
+					$dataInput[$no]['puskesmas'] = $itemPuskesmas->puskesmas;
 					$dataInput[$no][$itemNilai->kriteria] = $itemNilai->nilai;
 				}
 			}
@@ -134,7 +134,7 @@ class Rangking extends MY_Controller
 		$dataSifat = array();
 		foreach ($sawData as $item => $value) {
 			foreach ($value as $x => $z) {
-				if ($x == 'Universitas') {
+				if ($x == 'Puskesmas') {
 					continue;
 				}
 				$dataSifat[$x] = $this->MSAW->getStatus($x);
@@ -149,7 +149,7 @@ class Rangking extends MY_Controller
 		$dataValueMinMax = array();
 		foreach ($sawData as $point => $value) {
 			foreach ($value as $x => $z) {
-				if ($x == 'Universitas') {
+				if ($x == 'Puskesmas') {
 					continue;
 				}
 				foreach ($dataSifat as $item => $itemX) {
@@ -185,7 +185,7 @@ class Rangking extends MY_Controller
 		$sawData = $this->MSAW->getAll();
 		foreach ($sawData as $point => $value) {
 			foreach ($value as $x => $z) {
-				if ($x == 'Universitas') {
+				if ($x == 'Puskesmas') {
 					continue;
 				}
 				foreach ($dataSifat as $item => $sifat) {
@@ -202,7 +202,7 @@ class Rangking extends MY_Controller
 							);
 							$where = array(
 
-								'Universitas' => $value->Universitas
+								'Puskesmas' => $value->Puskesmas
 							);
 
 							$this->MSAW->update($dataUpdate, $where);
@@ -217,7 +217,7 @@ class Rangking extends MY_Controller
 							);
 							$where = array(
 
-								'Universitas' => $value->Universitas
+								'Puskesmas' => $value->Puskesmas
 							);
 
 							$this->MSAW->update($dataUpdate, $where);
@@ -237,7 +237,7 @@ class Rangking extends MY_Controller
 		foreach ($sawData as $item => $value) {
 			$total = 0;
 			foreach ($value as $item => $itemData) {
-				if ($item == 'Universitas') {
+				if ($item == 'Puskesmas') {
 					continue;
 				} elseif ($item == 'Total') {
 					$dataUpdate = array(
@@ -245,7 +245,7 @@ class Rangking extends MY_Controller
 					);
 
 					$where = array(
-						'Universitas' => $value->Universitas
+						'Puskesmas' => $value->Puskesmas
 					);
 
 					$this->MSAW->update($dataUpdate, $where);
@@ -262,7 +262,7 @@ class Rangking extends MY_Controller
 		$sawData = $this->MSAW->getAll();
 		foreach ($sawData as $point => $value) {
 			foreach ($value as $x => $z) {
-				if ($x == 'Universitas') {
+				if ($x == 'Puskesmas') {
 					continue;
 				}
 				foreach ($bobot as $item => $itemKriteria) {
@@ -275,7 +275,7 @@ class Rangking extends MY_Controller
 							$x => $newData
 						);
 						$where = array(
-							'Universitas' => $value->Universitas
+							'Puskesmas' => $value->Puskesmas
 						);
 
 						$this->MSAW->update($dataUpdate, $where);
@@ -296,7 +296,7 @@ class Rangking extends MY_Controller
 				'Rangking' => $no
 			);
 			$where = array(
-				'Universitas' => $value->Universitas
+				'Puskesmas' => $value->Puskesmas
 			);
 
 			$this->MSAW->update($dataUpdate, $where);

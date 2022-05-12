@@ -6,11 +6,11 @@
  * untuk memenuhi tugas mata kuliah Sistem Pendukung Keputusan.
  */
 
-class MUniversitas extends CI_Model
+class MPuskesmas extends CI_Model
 {
 
-	public $kdUniversitas;
-	public $universitas;
+	public $kdPuskesmas;
+	public $puskesmas;
 
 	public function __construct()
 	{
@@ -19,13 +19,13 @@ class MUniversitas extends CI_Model
 
 	private function getTable()
 	{
-		return 'universitas';
+		return 'puskesmas';
 	}
 
 	private function getData()
 	{
 		$data = array(
-			'universitas' => $this->universitas
+			'puskesmas' => $this->puskesmas
 		);
 
 		return $data;
@@ -33,14 +33,14 @@ class MUniversitas extends CI_Model
 
 	public function getAll()
 	{
-		$universitas = array();
+		$puskesmas = array();
 		$query = $this->db->get($this->getTable());
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
-				$universitas[] = $row;
+				$puskesmas[] = $row;
 			}
 		}
-		return $universitas;
+		return $puskesmas;
 	}
 
 
@@ -58,14 +58,14 @@ class MUniversitas extends CI_Model
 
 	public function delete($id)
 	{
-		$this->db->where('kdUniversitas', $id);
+		$this->db->where('kdPuskesmas', $id);
 		return $this->db->delete($this->getTable());
 	}
 
 	public function getLastID()
 	{
-		$this->db->select('kdUniversitas');
-		$this->db->order_by('kdUniversitas', 'DESC');
+		$this->db->select('kdPuskesmas');
+		$this->db->order_by('kdPuskesmas', 'DESC');
 		$this->db->limit(1);
 		$query = $this->db->get($this->getTable());
 		return $query->row();

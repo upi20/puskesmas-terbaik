@@ -79,9 +79,9 @@
 							<li <?php if ($this->uri->segment(1) == 'kriteria') {
 								?> class="active" <?php
 												} ?>><a href="<?php echo site_url('kriteria'); ?>">Kriteria</a></li>
-							<li <?php if ($this->uri->segment(1) == 'universitas') {
+							<li <?php if ($this->uri->segment(1) == 'puskesmas') {
 								?> class="active" <?php
-												} ?>><a href="<?php echo site_url('universitas'); ?>">Universitas</a></li>
+												} ?>><a href="<?php echo site_url('puskesmas'); ?>">Puskesmas</a></li>
 							<li <?php if ($this->uri->segment(1) == 'rangking') {
 								?> class="active" <?php
 												} ?>><a href="<?php echo site_url('rangking'); ?>">Rangking</a></li>

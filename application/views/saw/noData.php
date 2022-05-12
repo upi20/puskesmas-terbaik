@@ -1,5 +1,5 @@
 <h1>
     <div class="alert alert-danger" role="alert">
-        Data Universitas kosong, Harap mengisi data universitas untuk menghitung rangking !
+        Data Puskesmas kosong, Harap mengisi data puskesmas untuk menghitung rangking !
     </div>
 </h1>

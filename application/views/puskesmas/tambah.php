@@ -1,14 +1,14 @@
 <div class="page-header">
-	<h1>Tambah Universitas</h1>
+	<h1>Tambah Puskesmas</h1>
 </div>
 <div class="col-md-12">
 	<?php echo form_open() ?>
 	<div class="row">
 		<div class="errors">
 			<?php
-			//            dump($nilaiUniversitas);
+			//            dump($nilaiPuskesmas);
 			//            dump($dataView);
-			//            foreach ($nilaiUniversitas as $item => $value) {
+			//            foreach ($nilaiPuskesmas as $item => $value) {
 			//                echo $value->nilai;
 			//            }
 			$errors = $this->session->flashdata('errors');
@@ -28,9 +28,9 @@
 			<div class="panel-body">
 				<div class="form-inline">
 					<div class="form-group">
-						<label for="universitas">Nama Universitas</label>
-						<input name="universitas" type="text" class="form-control" id="universitas" value="<?php echo isset($nilaiUniversitas[0]->universitas) ? $nilaiUniversitas[0]->universitas : '' ?>" placeholder="nama universitas">
-						<input name="universitas_asal" type="text" id="universitas_asal" value="<?php echo isset($nilaiUniversitas[0]->universitas) ? $nilaiUniversitas[0]->universitas : '' ?>" hidden>
+						<label for="puskesmas">Nama Puskesmas</label>
+						<input name="puskesmas" type="text" class="form-control" id="puskesmas" value="<?php echo isset($nilaiPuskesmas[0]->puskesmas) ? $nilaiPuskesmas[0]->puskesmas : '' ?>" placeholder="nama puskesmas">
+						<input name="puskesmas_asal" type="text" id="puskesmas_asal" value="<?php echo isset($nilaiPuskesmas[0]->puskesmas) ? $nilaiPuskesmas[0]->puskesmas : '' ?>" hidden>
 					</div>
 				</div>
 			</div>
@@ -53,8 +53,8 @@
 
 						?>
 							<td>
-								<input type="radio" name="nilai[<?php echo $dataItem->kdKriteria ?>]" id="nilai<?php echo $dataItem->kdKriteria ?>-<?php echo $dataItem->value ?>" value="<?php echo $dataItem->value ?>" <?php if (isset($nilaiUniversitas)) {
-																																																								foreach ($nilaiUniversitas as $item => $value) {
+								<input type="radio" name="nilai[<?php echo $dataItem->kdKriteria ?>]" id="nilai<?php echo $dataItem->kdKriteria ?>-<?php echo $dataItem->value ?>" value="<?php echo $dataItem->value ?>" <?php if (isset($nilaiPuskesmas)) {
+																																																								foreach ($nilaiPuskesmas as $item => $value) {
 																																																									if ($value->kdKriteria == $dataItem->kdKriteria) {
 																																																										if ($value->nilai ==  $dataItem->value) {
 																																																							?> checked="checked" <?php
@@ -67,8 +67,8 @@
 																																																																		}
 																																																																	}
 																																																																			?> /> <?php echo '<label class="label-kriteria" for="nilai' . $dataItem->kdKriteria . '-' . $dataItem->value . '">' . $dataItem->subKriteria . "</label>";
-																																																																						$no++;
-																																																																						?>
+																																																																					$no++;
+																																																																					?>
 							</td>
 
 					<?php
@@ -83,7 +83,7 @@
 		<div class="pull-right">
 			<div class="col-md-12">
 				<button class="btn btn-primary" type="submit">Save</button>
-				<a class="btn btn-danger" href="<?php echo site_url('universitas') ?>" role="button">Batal</a>
+				<a class="btn btn-danger" href="<?php echo site_url('puskesmas') ?>" role="button">Batal</a>
 
 			</div>
 		</div>

@@ -8,23 +8,23 @@
 
 if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Universitas extends MY_Controller
+class Puskesmas extends MY_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->page->setTitle('Universitas | SPK Metode SAW');
+		$this->page->setTitle('Puskesmas | SPK Metode SAW');
 		$this->load->model('MKriteria');
 		$this->load->model('MSubKriteria');
-		$this->load->model('MUniversitas');
+		$this->load->model('MPuskesmas');
 		$this->load->model('MNilai');
-		$this->page->setLoadJs('assets/js/universitas');
+		$this->page->setLoadJs('assets/js/puskesmas');
 	}
 
 	public function index()
 	{
-		$data['universitas'] = $this->MUniversitas->getAll();
-		loadPage('universitas/index', $data);
+		$data['puskesmas'] = $this->MPuskesmas->getAll();
+		loadPage('puskesmas/index', $data);
 	}
 
 	public function tambah($id = null)
@@ -32,21 +32,21 @@ class Universitas extends MY_Controller
 
 		if ($id == null) {
 			if (count($_POST)) {
-				$this->form_validation->set_rules('universitas', '', 'trim|required');
+				$this->form_validation->set_rules('puskesmas', '', 'trim|required');
 				if ($this->form_validation->run() == false) {
 					$errors = $this->form_validation->error_array();
 					$this->session->set_flashdata('errors', $errors);
 					redirect(current_url());
 				} else {
 
-					$universitas = $this->input->post('universitas');
+					$puskesmas = $this->input->post('puskesmas');
 					$nilai = $this->input->post('nilai');
-					$this->MUniversitas->universitas = $universitas;
-					if ($this->MUniversitas->insert() == true) {
+					$this->MPuskesmas->puskesmas = $puskesmas;
+					if ($this->MPuskesmas->insert() == true) {
 						$success = false;
-						$kdUniversitas = $this->MUniversitas->getLastID()->kdUniversitas;
+						$kdPuskesmas = $this->MPuskesmas->getLastID()->kdPuskesmas;
 						foreach ($nilai as $item => $value) {
-							$this->MNilai->kdUniversitas = $kdUniversitas;
+							$this->MNilai->kdPuskesmas = $kdPuskesmas;
 							$this->MNilai->kdKriteria = $item;
 							$this->MNilai->nilai = $value;
 							if ($this->MNilai->insert()) {
@@ -55,7 +55,7 @@ class Universitas extends MY_Controller
 						}
 						if ($success == true) {
 							$this->session->set_flashdata('message', 'Berhasil menambah data.');
-							redirect('universitas');
+							redirect('puskesmas');
 						} else {
 							echo 'gagal';
 						}
@@ -64,30 +64,30 @@ class Universitas extends MY_Controller
 				//-----
 			} else {
 				$data['dataView'] = $this->getDataInsert();
-				loadPage('universitas/tambah', $data);
+				loadPage('puskesmas/tambah', $data);
 			}
 		} else {
 			if (count($_POST)) {
-				$kdUniversitas = $this->uri->segment(3, 0);
-				if ($kdUniversitas > 0) {
-					$universitas = $this->input->post('universitas');
-					$universitas_asal = $this->input->post('universitas_asal');
+				$kdPuskesmas = $this->uri->segment(3, 0);
+				if ($kdPuskesmas > 0) {
+					$puskesmas = $this->input->post('puskesmas');
+					$puskesmas_asal = $this->input->post('puskesmas_asal');
 					$nilai = $this->input->post('nilai');
-					$where = array('kdUniversitas' => $kdUniversitas);
-					$this->MUniversitas->universitas = $universitas;
-					if ($this->MUniversitas->update($where) == true) {
+					$where = array('kdPuskesmas' => $kdPuskesmas);
+					$this->MPuskesmas->puskesmas = $puskesmas;
+					if ($this->MPuskesmas->update($where) == true) {
 						$success = false;
 						foreach ($nilai as $item => $value) {
-							$this->MNilai->kdUniversitas = $kdUniversitas;
+							$this->MNilai->kdPuskesmas = $kdPuskesmas;
 							$this->MNilai->kdKriteria = $item;
 							$this->MNilai->nilai = $value;
 							if ($this->MNilai->update()) {
 								$success = true;
 							}
 						}
-						if ($success == true || $universitas_asal != $universitas) {
+						if ($success == true || $puskesmas_asal != $puskesmas) {
 							$this->session->set_flashdata('message', 'Berhasil mengubah data.');
-							redirect('universitas');
+							redirect('puskesmas');
 						} else {
 							echo '<div class="container"><div class="alert alert-danger" role="alert"><strong>Gagal</strong>  Tidak ada data yang diubah.</div></div>';
 						}
@@ -95,8 +95,8 @@ class Universitas extends MY_Controller
 				}
 			}
 			$data['dataView'] = $this->getDataInsert();
-			$data['nilaiUniversitas'] = $this->MNilai->getNilaiByUniveristas($id);
-			loadPage('universitas/tambah', $data);
+			$data['nilaiPuskesmas'] = $this->MNilai->getNilaiByUniveristas($id);
+			loadPage('puskesmas/tambah', $data);
 		}
 	}
 
@@ -118,7 +118,7 @@ class Universitas extends MY_Controller
 	public function delete($id)
 	{
 		if ($this->MNilai->delete($id) == true) {
-			if ($this->MUniversitas->delete($id) == true) {
+			if ($this->MPuskesmas->delete($id) == true) {
 				$this->session->set_flashdata('message', 'Berhasil menghapus data.');
 				echo json_encode(array("status" => 'true'));
 			}
