@@ -18,6 +18,7 @@ class Rangking extends MY_Controller
 		$this->load->model('MPuskesmas');
 		$this->load->model('MSAW');
 		$this->page->setTitle('Rangking | SPK Metode SAW');
+		$this->page->setLoadJs('assets/js/ranking');
 	}
 
 	public function index()
