@@ -1,116 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<title>
-		<?php echo $this->page->generateTitle(); ?>
-	</title>
 
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-	<?php
-	$this->page->generateCss();
-	?>
+	<title><?= $this->page->generateTitle(); ?></title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<?= $this->page->generateCss(); ?>
 
-	<style>
-		body {
-			padding-top: 70px;
-		}
-
-		.footer {
-			position: fixed;
-			left: 0;
-			bottom: 0;
-			width: 100%;
-			color: white;
-			padding: 16px 0;
-			background: rgb(4, 0, 55);
-			background: -moz-linear-gradient(286deg, rgba(4, 0, 55, 1) 0%, rgba(8, 8, 8, 1) 100%);
-			background: -webkit-linear-gradient(286deg, rgba(4, 0, 55, 1) 0%, rgba(8, 8, 8, 1) 100%);
-			background: linear-gradient(286deg, rgba(4, 0, 55, 1) 0%, rgba(8, 8, 8, 1) 100%);
-			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#040037", endColorstr="#080808", GradientType=1);
-			border-color: #080808;
-
-		}
-
-		.pd-bottom {
-			padding-bottom: 80px;
-		}
-
-		.font-weight-bold {
-			font-weight: bold;
-		}
-
-		.box-style-shadow {
-			box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.1);
-			-webkit-box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.1);
-			-moz-box-shadow: 0px 0px 30px -1px rgba(0, 0, 0, 0.1);
-		}
-
-		.label-kriteria {
-			text-transform: capitalize;
-			font-weight: normal;
-			cursor: pointer;
-			padding: 10px;
-		}
-	</style>
 </head>
 
-<body>
-	<div class="wrapper">
-		<nav class="navbar navbar-inverse navbar-fixed-top ">
-			<div class="container">
-				<div class="container-fluid">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						<a class="navbar-brand active" href="<?php echo site_url() ?>">SPK Uinv Metode SAW</a>
-					</div>
+<body id="page-top">
 
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						<ul class="nav navbar-nav">
-							<li <?php if ($this->uri->segment(1) == 'kriteria') {
-								?> class="active" <?php
-												} ?>><a href="<?php echo site_url('kriteria'); ?>">Kriteria</a></li>
-							<li <?php if ($this->uri->segment(1) == 'puskesmas') {
-								?> class="active" <?php
-												} ?>><a href="<?php echo site_url('puskesmas'); ?>">Puskesmas</a></li>
-							<li <?php if ($this->uri->segment(1) == 'rangking') {
-								?> class="active" <?php
-												} ?>><a href="<?php echo site_url('rangking'); ?>">Rangking</a></li>
-						</ul>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-					</div><!-- /.navbar-collapse -->
+		<!-- Sidebar -->
+		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+			<!-- Sidebar - Brand -->
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+				<div class="sidebar-brand-icon">
+					<i class="fas fa-clinic-medical"></i>
 				</div>
+				<div class="sidebar-brand-text mx-3">SPK SAW</div>
+			</a>
 
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
+
+			<!-- Nav Item - Dashboard -->
+			<?php $active = $this->uri->segment(1) == null ? 'active' : ''; ?>
+			<li class="nav-item <?= $active ?>">
+				<a class="nav-link py-2" href="<?= site_url('') ?>">
+					<i class="fas fa-home"></i>
+					<span>Home</span></a>
+			</li>
+
+			<?php $active = $this->uri->segment(1) == 'kriteria' ? 'active' : ''; ?>
+			<li class="nav-item <?= $active ?>">
+				<a class="nav-link py-2" href="<?= site_url('kriteria') ?>">
+					<i class="fas fa-list"></i>
+					<span>Kriteria</span></a>
+			</li>
+
+			<?php $active = $this->uri->segment(1) == 'puskesmas' ? 'active' : ''; ?>
+			<li class="nav-item <?= $active ?>">
+				<a class="nav-link py-2" href="<?= site_url('puskesmas') ?>">
+					<i class="fas fa-clinic-medical"></i>
+					<span>Puskesmas</span></a>
+			</li>
+
+			<?php $active = $this->uri->segment(1) == 'rangking' ? 'active' : ''; ?>
+			<li class="nav-item <?= $active ?>">
+				<a class="nav-link py-2" href="<?= site_url('rangking') ?>">
+					<i class="fas fa-fw fa-file"></i>
+					<span>Hasil</span></a>
+			</li>
+
+			<!-- Divider -->
+			<hr class="sidebar-divider d-none d-md-block">
+
+			<!-- Sidebar Toggler (Sidebar) -->
+			<div class="text-center d-none d-md-inline">
+				<button class="rounded-circle border-0" id="sidebarToggle"></button>
+			</div>
+
+		</ul>
+		<!-- End of Sidebar -->
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+					<!-- Sidebar Toggle (Topbar) -->
+					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+						<i class="fa fa-bars"></i>
+					</button>
+
+					<span class="fw-bold font-weight-bold my-0 mr-0 ">SPK Puskesmas Paling Sehat</span>
+				</nav>
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<?php $this->load->view($view, $data); ?>
+
+				</div>
+				<!-- /.container-fluid -->
 
 			</div>
-		</nav>
-	</div>
+			<!-- End of Main Content -->
 
-	<div class="container pd-bottom">
-		<?php $this->load->view($view, $data); ?>
-	</div>
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>&copy; <?= date('Y') ?> | SPK Puskesmas Paling Sehat | 2113191079 - Isep Lutpi Nur</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
 
-	<div class="footer">
-		<div class="container">
-			<p>Copyright &copy 2020 2113191073 Akbar Maulana M Tarumadoya</p>
 		</div>
+		<!-- End of Content Wrapper -->
+
 	</div>
+	<!-- End of Page Wrapper -->
+
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
 
 	<script>
 		var base_url = "<?php echo site_url(); ?>";
 	</script>
-	<?php
-	$this->page->generateJs();
-	?>
+
+	<?= $this->page->generateJs(); ?>
 
 </body>
 

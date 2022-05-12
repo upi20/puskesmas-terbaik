@@ -2,7 +2,7 @@
 
 /**
  * Aplikasi ini dibuat oleh:
- * Akbar Maulana M Tarumadoya (2113191073)
+ * Isep Lutpi Nur (2113191079)
  * untuk memenuhi tugas mata kuliah Sistem Pendukung Keputusan.
  */
 class MNilai extends CI_Model
