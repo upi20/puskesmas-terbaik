@@ -3,6 +3,9 @@
  * Isep Lutpi Nur (2113191079)
  * untuk memenuhi tugas mata kuliah Sistem Pendukung Keputusan.
  */
+$(document).ready(function () {
+	$('#dataTable').DataTable();
+});
 
 function hapus_puskesmas(id) {
 	$.ajax({

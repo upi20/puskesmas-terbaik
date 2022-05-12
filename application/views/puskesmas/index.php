@@ -1,25 +1,27 @@
-<div class="page-header">
-	<h1>Halaman Olah Puskesmas</h1>
-</div>
-<div class="col-lg-12">
-	<?php
-	$msg = $this->session->flashdata('message');
-	if (isset($msg)) {
-	?>
-		<div class="alert alert-success alert-dismissable">
-			<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-			<?php echo $msg; ?>
-		</div>
-	<?php
-	}
-	?>
-	<div class="row">
-		<div class="panel panel-info box-style-shadow">
-
-			<div class="panel-heading">List Puskesmas</div>
-			<div class="panel-content">
+<?php
+$msg = $this->session->flashdata('message');
+if (isset($msg)) {
+?>
+	<div class="alert alert-success alert-dismissable">
+		<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+		<?= $msg; ?>
+	</div>
+<?php
+}
+?>
+<!-- DataTales Example -->
+<div class="row">
+	<div class="col-lg-6">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3 d-flex flex-md-row  justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">List Puskesmas</h6>
+				<div>
+					<a href="<?= site_url('puskesmas/tambah') ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</a>
+				</div>
+			</div>
+			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-hover">
+					<table class="table table-bordered table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th class="col-md-1">No</th>
@@ -37,10 +39,10 @@
 								foreach ($puskesmas as $item) {
 							?>
 									<tr>
-										<td><?php echo $no++ ?></td>
-										<td><?php echo $item->puskesmas ?></td>
+										<td><?= $no++ ?></td>
+										<td><?= $item->puskesmas ?></td>
 										<td>
-											<a class="btn btn-primary btn-xs" href="<?php echo site_url('puskesmas/tambah/' . $item->kdPuskesmas) ?>" role="button">
+											<a class="btn btn-primary btn-xs" href="<?= site_url('puskesmas/tambah/' . $item->kdPuskesmas) ?>" role="button">
 												<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Ubah
 											</a>
 
@@ -58,36 +60,27 @@
 					</table>
 				</div>
 			</div>
-
 		</div>
 	</div>
-
-	<div class="row">
-		<div class="form-group">
-			<a href="<?php echo site_url('puskesmas/tambah') ?>" type="button" class="btn btn-primary">Tambah
-				Puskesmas</a>
-		</div>
-
-	</div>
-
 </div>
 
-<div class="modal fade" tabindex="-1" role="dialog" id="modalDelete">
-	<div class="modal-dialog" role="document">
+
+<div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="form_kriteriaLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Konfirmasi hapus data</h4>
+				<h5 class="modal-title">Konfirmasi hapus data</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
 			</div>
 			<div class="modal-body">
 				<p>Apakah anda yakin menghapus data ini ? </p>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-danger" onclick="hapus_puskesmas(<?php echo $item->kdPuskesmas; ?>)">
-					Hapus
-				</button>
+				<button type="button" class="btn btn-danger" onclick="hapus_puskesmas('<?= $item->kdPuskesmas; ?>')"><i class="fas fa-trash"></i> Delete</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fas fa-times"></i> Close</button>
 			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+		</div>
+	</div>
+</div>
