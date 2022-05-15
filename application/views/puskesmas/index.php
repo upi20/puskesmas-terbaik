@@ -14,7 +14,7 @@ if (isset($msg)) {
 	<div class="col-lg-6">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3 d-flex flex-md-row  justify-content-between">
-				<h6 class="m-0 font-weight-bold text-primary">List Puskesmas</h6>
+				<h6 class="m-0 font-weight-bold text-primary">List Rumah Sakit</h6>
 				<div>
 					<a href="<?= site_url('puskesmas/tambah') ?>" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Tambah</a>
 				</div>
@@ -25,7 +25,7 @@ if (isset($msg)) {
 						<thead>
 							<tr>
 								<th class="col-md-1">No</th>
-								<th class="col-md-6">Puskesmas</th>
+								<th class="col-md-6">Rumah Sakit</th>
 								<th class="col-md-5 ">Action</th>
 							</tr>
 						</thead>

@@ -28,7 +28,8 @@
 				<div class="sidebar-brand-icon">
 					<i class="fas fa-clinic-medical"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3">SPK SAW</div>
+				<div class="sidebar-brand-text mx-3 text-left">Rumah Sakit Terbaik</div>
+
 			</a>
 
 			<!-- Divider -->
@@ -53,7 +54,7 @@
 			<li class="nav-item <?= $active ?>">
 				<a class="nav-link py-2" href="<?= site_url('puskesmas') ?>">
 					<i class="fas fa-clinic-medical"></i>
-					<span>Puskesmas</span></a>
+					<span>Rumah Sakit</span></a>
 			</li>
 
 			<?php $active = $this->uri->segment(1) == 'rangking' ? 'active' : ''; ?>
@@ -88,7 +89,7 @@
 						<i class="fa fa-bars"></i>
 					</button>
 
-					<span class="fw-bold font-weight-bold my-0 mr-0 ">SPK Puskesmas Paling Sehat</span>
+					<span class="fw-bold font-weight-bold my-0 mr-0 ">Metode SAW - SPK Rumah Sakit Terbaik</span>
 				</nav>
 				<!-- End of Topbar -->
 
@@ -107,7 +108,7 @@
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>&copy; <?= date('Y') ?> | SPK Puskesmas Paling Sehat | 2113191079 - Isep Lutpi Nur</span>
+						<span>&copy; <?= date('Y') ?> | SPK Rumah Sakit Terbaik | 2113191036 - Muhamad Taufiq Hidayatuloh</span>
 					</div>
 				</div>
 			</footer>

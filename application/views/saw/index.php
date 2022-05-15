@@ -201,7 +201,7 @@
 		<div class="card ">
 			<div class="card-header py-3 d-flex flex-md-row  justify-content-between">
 				<div>
-					<h6 class="m-0 font-weight-bold text-primary">Table 4 - Dijumlah sesuai dengan puskesmas dan di dapat hasil rangking</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Table 4 - Dijumlah sesuai dengan rumah sakit dan di dapat hasil rangking</h6>
 				</div>
 			</div>
 			<div class="card-body">
@@ -239,8 +239,8 @@
 				foreach ($table as $item => $value) :
 					if ($value->Rangking == 1) : ?>
 						<div class="alert alert-success" role="alert">
-							<h4><b>Kesimpulan : </b> Dari hasil perhitungan yang dilakukan menggunakan metode SAW
-								puskesmas terbaik untuk di pilih adalah
+							<h4><b>Kesimpulan : </b> Dari hasil perhitungan yang dilakukan menggunakan metode Simple Additive Weighting (SAW),
+								rumah sakit terbaik untuk di pilih adalah
 								<?php echo $value->Puskesmas ?> dengan nilai <?php echo $value->Total ?>
 							</h4>
 						</div>

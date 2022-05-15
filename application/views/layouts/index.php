@@ -1,11 +1,11 @@
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-		<h6 class="m-0 font-weight-bold text-primary">SPK Puskesmas Paling Sehat</h6>
+		<h6 class="m-0 font-weight-bold text-primary">Aplikasi Rumah Sakit Terbaik</h6>
 	</div>
 	<div class="card-body">
 		<h5 class="font-weight-bold h5">Deskripsi Aplikasi:</h5>
-		<p>Aplikasi ini dibuat oleh Isep Lutpi Nur (2113191079) untuk memenuhi tugas mata kuliah Sistem Pendukung Keputusan.</p>
-		<p>Aplikasi ini digunakan sebagai pendukung keputusan untuk saran puskesmas terbaik dengan metode SAW.</p>
+		<p>Aplikasi ini dibuat oleh Muhamad Taufiq Hidayatuloh (2113191036) untuk memenuhi tugas mata kuliah Sistem Pendukung Keputusan.</p>
+		<p>Aplikasi ini digunakan sebagai pendukung keputusan untuk saran rumah sakit terbaik dengan Metode Simple Additive Weighting (SAW).</p>
 		<br>
 		<h5 class="font-weight-bold">Cara Penggunaan:</h5>
 		<ol>

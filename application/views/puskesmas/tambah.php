@@ -12,7 +12,7 @@ if (isset($msg)) {
 <div class="card shadow mb-4">
 	<div class="card-header py-3 d-flex flex-md-row  justify-content-between">
 		<div>
-			<h6 class="m-0 font-weight-bold text-primary">Tambah Puskesmas</h6>
+			<h6 class="m-0 font-weight-bold text-primary">Tambah Rumah Sakit</h6>
 		</div>
 		<div>
 			<a class="btn btn-danger" href="<?= site_url('puskesmas') ?>" role="button"><i class="fas fa-times"></i> Batal</a>
@@ -37,9 +37,9 @@ if (isset($msg)) {
 			</div>
 
 			<div class="form-group row">
-				<label for="puskesmas" class="col-sm-2 col-form-label">Puskesmas</label>
+				<label for="puskesmas" class="col-sm-2 col-form-label">Rumah Sakit</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="puskesmas" name="puskesmas" placeholder="Nama Puskesmas" value="<?= isset($nilaiPuskesmas[0]->puskesmas) ? $nilaiPuskesmas[0]->puskesmas : '' ?>">
+					<input type="text" class="form-control" id="puskesmas" name="puskesmas" placeholder="Nama Rumah Sakit" value="<?= isset($nilaiPuskesmas[0]->puskesmas) ? $nilaiPuskesmas[0]->puskesmas : '' ?>">
 					<input name="puskesmas_asal" type="text" id="puskesmas_asal" value="<?= isset($nilaiPuskesmas[0]->puskesmas) ? $nilaiPuskesmas[0]->puskesmas : '' ?>" hidden>
 				</div>
 			</div>
